@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style type="text/css">
+        html {
+            margin: 0;
+            height: 100%;
+        }
+        body {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #eeeeee;
+        }
+        .container {
+            flex-direction: column;
+        }
+        #botao {
+            margin-top: 15px;
+            border-radius: 5px;
+            background-color: #00FA9A;
+            border: 1px solid #00D878;
+            padding: 5px;
+        }
+        .title {
+            margin-bottom: 15px;
+        }
+        form {
+            text-align: center;
+        }
+        #palavra-chave {
+            border-radius: 5px;
+            padding: 5px;
+        }
+    </style>
+    <title>Teste</title>
+</head>
+
+<body>
+    <div class="container">
+        <form onsubmit="capturarImagens(event)">
+            <div class="title">
+                <strong>Palavra-chave</strong>
+            </div>
+            <div>
+                <input type="text" id="palavra-chave" /> 
+            </div>
+            <div>
+                <button type="submit" id="botao">Capturar Imagens</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+    const { ipcRenderer } = require('electron');
+
+    function capturarImagens(event) {
+        event.preventDefault();
+
+        if (document.getElementById('palavra-chave').value) {
+            let keyWord = document.getElementById('palavra-chave').value;
+            ipcRenderer.send('downloadImages', keyWord);
+            console.log('foi');
+        } else {
+            console.log('nao foi');
+        }
+    }
+    ipcRenderer.on('return', (event, arg) => {
+
+    })
+</script>
+
+</html>

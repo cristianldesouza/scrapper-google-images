@@ -1,0 +1,17 @@
+{
+  "name": "teste-cristian",
+  "version": "1.0.0",
+  "description": "Teste Cristian Lipinski de Souza - ",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Cristian Lipinski de Souza",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^6.0.5"
+  },
+  "dependencies": {
+    "puppeteer": "^1.19.0"
+  }
+}
